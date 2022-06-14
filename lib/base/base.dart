@@ -32,6 +32,12 @@ class MainManager extends BaseClass {
     managers.addAll({name: manager});
     managers[name]!.initManager();
   }
+
+  Future<bool> initialization() async {
+    return true;
+  }
+
+  void initManager() {}
 }
 
 class BaseManager extends BaseClass with BaseApi, BaseUrls {
