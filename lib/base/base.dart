@@ -70,11 +70,6 @@ class BaseModel extends BaseClass {}
 mixin BaseApi implements BaseClass {}
 
 mixin BaseUrls implements BaseClass {
-  // ignore: constant_identifier_names
-  static const String PROTOCOL = 'https';
-  // ignore: constant_identifier_names
-  static const String HOST = 'isantur.ru';
-
   Future<Response?> getHttp(
     String path, {
     String? protocol,
@@ -85,8 +80,7 @@ mixin BaseUrls implements BaseClass {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      var response = await Dio().get(
-          '${protocol ?? BaseUrls.PROTOCOL}://${host ?? BaseUrls.HOST}' + path,
+      var response = await Dio().get(path,
           queryParameters: queryParameters,
           options: options,
           cancelToken: cancelToken,
@@ -110,8 +104,7 @@ mixin BaseUrls implements BaseClass {
     void Function(int, int)? onReceiveProgress,
   }) async {
     try {
-      var response = await Dio().post(
-          '${protocol ?? BaseUrls.PROTOCOL}://${host ?? BaseUrls.HOST}' + path,
+      var response = await Dio().post(path,
           data: data,
           queryParameters: queryParameters,
           options: options,
