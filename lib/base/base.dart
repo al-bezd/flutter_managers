@@ -40,10 +40,10 @@ class MainManager extends BaseClass {
   void initManager() {}
 }
 
-class BaseManager extends BaseClass with BaseApi, BaseUrls {
+class BaseManager extends BaseClass with BaseUrls {
   BaseManager({this.routes, this.tests});
-  StreamController stream = StreamController.broadcast();
-
+  StreamController streamController = StreamController.broadcast();
+  StreamController get sc => streamController;
   BaseRoutes? routes;
   BaseTests? tests;
 
@@ -65,13 +65,11 @@ class BaseManager extends BaseClass with BaseApi, BaseUrls {
   void initManager() {}
 
   void _update() {
-    stream.add(this);
+    sc.add(this);
   }
 }
 
 class BaseModel extends BaseClass {}
-
-mixin BaseApi implements BaseClass {}
 
 mixin BaseUrls implements BaseClass {
   Future<Response?> getHttp(
