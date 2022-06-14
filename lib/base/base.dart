@@ -64,7 +64,7 @@ class BaseManager extends BaseClass with BaseUrls {
 
   void initManager() {}
 
-  void _update() {
+  void update() {
     sc.add(this);
   }
 }
