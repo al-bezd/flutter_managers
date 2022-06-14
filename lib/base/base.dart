@@ -63,6 +63,10 @@ class BaseManager extends BaseClass with BaseApi, BaseUrls {
   }
 
   void initManager() {}
+
+  void _update() {
+    stream.add(this);
+  }
 }
 
 class BaseModel extends BaseClass {}
@@ -72,8 +76,6 @@ mixin BaseApi implements BaseClass {}
 mixin BaseUrls implements BaseClass {
   Future<Response?> getHttp(
     String path, {
-    String? protocol,
-    String? host,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -94,8 +96,6 @@ mixin BaseUrls implements BaseClass {
 
   Future<Response?> postHttp(
     String path, {
-    String? protocol,
-    String? host,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
