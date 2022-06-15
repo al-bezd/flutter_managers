@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 class BaseClass extends Object {}
 
 class MainManager extends BaseClass {
-  StreamController stream = StreamController.broadcast();
+  StreamController streamController = StreamController.broadcast();
+  StreamController get sc => streamController;
   Map<String, BaseManager> managers = {};
 
   Route<dynamic>? route(RouteSettings routeSettings) {
@@ -38,6 +39,10 @@ class MainManager extends BaseClass {
   }
 
   void initManager() {}
+
+  void update() {
+    sc.add(this);
+  }
 }
 
 class BaseManager extends BaseClass with BaseUrls {
